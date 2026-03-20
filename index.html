@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickMail | Temp Email Service</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-envelope-open-text"></i> QuickMail</h1>
+            <p>Your temporary disposal email address</p>
+        </header>
+
+        <div class="email-box">
+            <div class="input-group">
+                <input type="text" id="emailAddr" readonly placeholder="Generating email...">
+                <button onclick="copyEmail()" title="Copy Email"><i class="far fa-copy"></i></button>
+                <button onclick="refreshEmail()" title="New Email"><i class="fas fa-sync-alt"></i></button>
+            </div>
+            <div id="status" class="status">Checking for new messages... <span class="loader"></span></div>
+        </div>
+
+        <div class="inbox-container">
+            <div class="inbox-header">
+                <h2>Inbox</h2>
+                <button onclick="fetchMessages()" class="btn-sm">Refresh Now</button>
+            </div>
+            <div id="inboxList">
+                <div class="empty-state">No messages yet. Waiting for incoming emails...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for reading email -->
+    <div id="mailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="mailContent">
+                <h2 id="mailSubject"></h2>
+                <div id="mailMeta"></div>
+                <hr>
+                <div id="mailBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
